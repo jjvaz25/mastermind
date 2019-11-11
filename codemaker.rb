@@ -12,7 +12,6 @@ class Codemaker
       number = rand(6)
       @chosen_code.push(@color_options[number])
     end
-    p @chosen_code
     @chosen_code
   end
 
