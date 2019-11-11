@@ -17,6 +17,3 @@ class Codemaker
   end
 
 end
-
-computer = Codemaker.new
-computer.create_code

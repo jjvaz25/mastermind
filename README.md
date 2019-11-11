@@ -25,11 +25,8 @@ There are two colored pegs:
   [black = correct color AND location, red = correct color but incorrect location]
 
   Computer must
-    1) select 4 of the above colors randomly
-      assign each color to a number that is randomly generated, place the four
-      chosen colors in an array
-    2) randomly assort those colors in an array
-      is there a method to randomly mix up an array?
+    1) Randomly select 4 of the above colors 
+
   
   Human must
     1) select 4 colors
