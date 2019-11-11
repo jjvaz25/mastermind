@@ -14,3 +14,53 @@ Mastermind, let alone play it. Given my limited knowledge, the game may not be
         of the color was incorrect
     5c) No pegs indicate that the guess is completely incorrect. No matching
         colors or positions. 
+
+=begin thoughts
+
+computer is the codemaker. Computer must randomly select 4 colors. There are
+6 colors available to choose:
+  [blue, red, green, orange, purple, yellow]
+
+There are two colored pegs:
+  [black = correct color AND location, red = correct color but incorrect location]
+
+  Computer must
+    1) select 4 of the above colors randomly
+      assign each color to a number that is randomly generated, place the four
+      chosen colors in an array
+    2) randomly assort those colors in an array
+      is there a method to randomly mix up an array?
+  
+  Human must
+    1) select 4 colors
+  
+  Computer must
+    1) place pegs
+  
+  Things to think about. What is the best way to store color selections for computer
+  and person? An array, a hash? Both the color name and color position matter,
+  which makes me think an array is best. We can use the element name as the color
+  and the index as the position match.
+
+  Should I make one class with the codebreaker and codemaker players? Or a 
+  seperate class for each player? Leaning toward 3 classes (codemaker, codebreaker
+  and play-game)
+
+  Codemaker methods
+    1) randomly generate array with 4 of 6 colors
+    2) randomly mix those 4 colors in an array
+    3) identify the correct-ness of the player's guesses (feedback)
+  
+  codebreaker methods
+    1) make a guess
+  
+  Game methods
+    1) Game start
+    2) Game over
+  
+  Loops
+    1)loop starts with codebreaker guess
+    2)loop continues with feedback from codemaker
+    3)loop breaks after correct guess or 12 guesses
+
+=end thoughts
