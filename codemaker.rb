@@ -19,4 +19,4 @@ class Codemaker
 end
 
 computer = Codemaker.new
-
+computer.create_code
