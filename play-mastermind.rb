@@ -14,7 +14,7 @@ class Mastermind
     guess = @codebreaker.guess
     @code_to_break.each_with_index do |color, index|
       p "#{color}: #{index}"
-      if @code_to_break[index] = guess[index]
+      if @code_to_break[index] == guess[index]
         peg_array.push("black_peg")
       end
     end
