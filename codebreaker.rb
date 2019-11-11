@@ -38,7 +38,3 @@ class Codebreaker
   end 
 
 end #end class
-
-
-human = Codebreaker.new
-human.guess
