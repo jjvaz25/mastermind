@@ -17,7 +17,7 @@ class Mastermind
   def match
     while @game_over != true
       @code_copy = @code_to_break.dup
-      #p @code_copy (this will reveal the code to break)
+      #p @code_copy #(this will reveal the code to break)
       @peg_array = [] 
       @white_peg_values = []
       @guess = []
@@ -57,7 +57,7 @@ class Mastermind
   end
   
   def game_over?
-    if @peg_array == ["black_peg", "black_peg", "black_peg", "black_peg"]#I may be able to refactor this as peg_array[3] == "black_peg"
+    if @peg_array == ["black_peg", "black_peg", "black_peg", "black_peg"]
       puts "Congrats! You cracked the code!"
       puts "Here is the code you cracked:"
       p @code_to_break
@@ -73,27 +73,8 @@ class Mastermind
     end
   end
 
-end #class end
+end
 
 game = Mastermind.new
 game.match
-
-
-# TESTS
-#["yellow", "orange", "yellow", "purple"]
-#["yellow", "blue", "blue", "blue"]
-#expect: black_peg
-#result: black_peg, white_peg
-
-#2nd round my guess ["orange", "blue", "blue", "blue"] (make sure you don't see removed)
-
-#computer code: ["purple", "purple", "yellow", "purple"]
-#my guess:      ["purple", "yellow", "purple", "blue"]
-#actual result: ["black_peg", "white_peg", "white_peg", "white_peg"]
-#expect result: [black_peg, white_peg, white_peg]
-
-#comp code: ["purple", "purple", "yellow", "purple"]
-#guess:     ["green", "red", "red", "purple"]
-#actual result: ["black_peg", "white_peg"]
-#expected result: [black peg]
 
