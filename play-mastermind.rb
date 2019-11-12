@@ -26,7 +26,6 @@ class Mastermind
       @guess = []
       puts "You are currently on guess number #{@total_guesses+1}"
       puts "This is your last guess!" if @total_guesses == 11
-      puts "before pegs methods, code2br: #{@code_to_break}"
       insert_black_pegs
       insert_white_pegs
       @white_peg_values.each { |color| @peg_array.push("white_peg") } #maybe include this in insert_white_pegs
@@ -40,11 +39,11 @@ class Mastermind
   def insert_black_pegs
     @guess = @codebreaker.guess
     @code_copy.each_with_index do |color, index|
-      #p "#{color}: #{index}"
       if @code_copy[index] == @guess[index]
         @peg_array.push("black_peg")
         @code_copy[index] = "removed"
         @guess[index] = "removed"
+        p @code_to_break # I still want this to equal ["yellow", "orange", "yellow", "purple"] NOT ["removed", "orange", "yellow", "purple"]
       end
     end
     @peg_array
