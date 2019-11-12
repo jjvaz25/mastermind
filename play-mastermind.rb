@@ -7,18 +7,19 @@ class Mastermind
     @codebreaker = Codebreaker.new
     #@code_to_break = @codemaker.create_code
     @code_to_break = ["purple", "purple", "yellow", "purple"]
+    @peg_array = []
   end
 
   def match
     code_copy = @code_to_break
-    peg_array = []
+    #peg_array = []
     white_peg_values = []
     p code_copy
     guess = @codebreaker.guess
     code_copy.each_with_index do |color, index|
       #p "#{color}: #{index}"
       if code_copy[index] == guess[index]
-        peg_array.push("black_peg")
+        @peg_array.push("black_peg")
         code_copy[index] = "removed"
         guess[index] = "removed"
       elsif code_copy[index] != guess[index] && guess.include?(color)
@@ -26,11 +27,14 @@ class Mastermind
         white_peg_values = white_peg_values.uniq
       end
     end
-    white_peg_values.each { |color| peg_array.push("white_peg") }
+    white_peg_values.each { |color| @peg_array.push("white_peg") }
     # code_copy = @code_to_break (I don't think I need this line of code because 
     #the "removed" elements will be replaced with their proper terms in line 13)
-    p peg_array
+    p @peg_array
   end
+  
+  
+
 end #class end
 
 game = Mastermind.new
