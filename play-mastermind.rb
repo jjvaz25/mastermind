@@ -1,7 +1,6 @@
 require_relative 'codebreaker.rb'
 require_relative 'codemaker.rb'
 
-# finished turn guessing loop, game over method.
 class Mastermind
   def initialize
     @codemaker = Codemaker.new
@@ -9,8 +8,8 @@ class Mastermind
     #@code_to_break = @codemaker.create_code
     @code_to_break = ["yellow", "orange", "yellow", "purple"]
     @code_copy = []
-    @peg_array = [] #maybe delete this if insert black peg breaks
-    @white_peg_values = [] #maybe delete this if insert black peg breaks
+    @peg_array = [] 
+    @white_peg_values = [] 
     @game_over = false
     @total_guesses = 0
     @guess = []
