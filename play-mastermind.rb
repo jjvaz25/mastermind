@@ -17,9 +17,8 @@ class Mastermind
 
   def match
     while @game_over != true
-      @code_copy = @code_to_break
-      puts "Code copy1: #{@code_copy}"
-      puts "Code code_2_br: #{@code_to_break}"
+      @code_copy = @code_to_break.dup
+      p @code_copy
       @peg_array = [] 
       @white_peg_values = []
       @guess = []
@@ -31,7 +30,6 @@ class Mastermind
       @total_guesses += 1
       p @peg_array
       game_over?
-      p @code_to_break
     end
   end
 
@@ -42,7 +40,6 @@ class Mastermind
         @peg_array.push("black_peg")
         @code_copy[index] = "removed"
         @guess[index] = "removed"
-        p @code_to_break # I still want this to equal ["yellow", "orange", "yellow", "purple"] NOT ["removed", "orange", "yellow", "purple"]
       end
     end
     @peg_array
@@ -146,4 +143,15 @@ tests above
     p @peg_array
   end
 
+=end
+
+=begin
+Also, question for anyone else. I think I am misunderstanding how Ruby variable assignment works. I have an array, which is set to a variable (lets call it '@code_to_break'). I then create a second variable (let's call it '@code_copy'), and set it equal to '@code_to_break'. I'd like to be able to manipulate '@code_copy' in the beginning of a loop, and then have it reset back to its original value (the equivalent of '@code_to_break') at the end of the loop. I tried to accomplish this by assigning '@code_copy' to '@code_to_break' at the end of the loop, but it looks like my '@code_to_break' is also getting manipulated in the loop.  You can find my code here: https://github.com/jjvaz25/mastermind/blob/master/play-mastermind.rb
+
+specifically, I'm looking at the #match method and the #insert_black_pegs method on line 46
+GitHub
+jjvaz25/mastermind
+A game of mastermind played via the command line. Contribute to jjvaz25/mastermind development by creating an account on GitHub.
+
+You can ignore the abundance of puts statements, trying to use them to troubleshoot where I'm going from
 =end
