@@ -1,6 +1,7 @@
 require_relative 'codebreaker.rb'
 require_relative 'codemaker.rb'
 
+# finished turn guessing loop, game over method.
 class Mastermind
   def initialize
     @codemaker = Codemaker.new
@@ -17,42 +18,25 @@ class Mastermind
 
   def match
     while @game_over != true
-      puts "You are on guess number #{@total_guesses+1}"
-      puts "This is your last guess!" if @total_guesses == 11
       @code_copy = @code_to_break
+      puts "Code copy1: #{@code_copy}"
+      puts "Code code_2_br: #{@code_to_break}"
       @peg_array = [] 
       @white_peg_values = []
       @guess = []
-      p @code_copy
+      puts "You are currently on guess number #{@total_guesses+1}"
+      puts "This is your last guess!" if @total_guesses == 11
+      puts "before pegs methods, code2br: #{@code_to_break}"
       insert_black_pegs
       insert_white_pegs
       @white_peg_values.each { |color| @peg_array.push("white_peg") } #maybe include this in insert_white_pegs
-      # @code_copy = @code_to_break (I don't think I need this line of code because 
-      #the "removed" elements will be replaced with their proper terms in line 13)
       @total_guesses += 1
-      p @total_guesses
       p @peg_array
       game_over?
+      p @code_to_break
+    end
+  end
 
-    end
-  end
-=begin
-  def insert_pegs
-    #(@guess for below)?
-    guess = @codebreaker.guess
-    @code_copy.each_with_index do |color, index|
-      #p "#{color}: #{index}"
-      if @code_copy[index] == guess[index]
-        @peg_array.push("black_peg")
-        @code_copy[index] = "removed"
-        guess[index] = "removed"
-      elsif @code_copy[index] != guess[index] && guess.include?(color)
-        @white_peg_values.push(color)
-        @white_peg_values = @white_peg_values.uniq
-      end
-    end
-  end
-=end
   def insert_black_pegs
     @guess = @codebreaker.guess
     @code_copy.each_with_index do |color, index|
@@ -101,6 +85,8 @@ game.match
 #["yellow", "blue", "blue", "blue"]
 #expect: black_peg
 #result: black_peg, white_peg
+
+#2nd round my guess ["orange", "blue", "blue", "blue"] (make sure you don't see removed)
 
 #computer code: ["purple", "purple", "yellow", "purple"]
 #my guess:      ["purple", "yellow", "purple", "blue"]
