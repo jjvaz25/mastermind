@@ -16,31 +16,27 @@ class Mastermind
   end
 
   def match
-    @code_copy = @code_to_break
-    @peg_array = [] 
-    @white_peg_values = []
-    p @code_copy
-    insert_black_pegs
-    insert_white_pegs
-=begin
-    guess = @codebreaker.guess
-    @code_copy.each_with_index do |color, index|
-      if @code_copy[index] == guess[index]
-        @peg_array.push("black_peg")
-        @code_copy[index] = "removed"
-        guess[index] = "removed"
-      elsif @code_copy[index] != guess[index] && guess.include?(color)
-        white_peg_values.push(color)
-        white_peg_values = white_peg_values.uniq
-      end
-    end
-=end
-    @white_peg_values.each { |color| @peg_array.push("white_peg") }
-    # @code_copy = @code_to_break (I don't think I need this line of code because 
-    #the "removed" elements will be replaced with their proper terms in line 13)
-    p @peg_array
-  end
+    while @game_over != true
+      puts "You are on guess number #{@total_guesses+1}"
+      puts "This is your last guess!" if @total_guesses == 11
+      @code_copy = @code_to_break
+      @peg_array = [] 
+      @white_peg_values = []
+      @guess = []
+      p @code_copy
+      insert_black_pegs
+      insert_white_pegs
+      @white_peg_values.each { |color| @peg_array.push("white_peg") } #maybe include this in insert_white_pegs
+      # @code_copy = @code_to_break (I don't think I need this line of code because 
+      #the "removed" elements will be replaced with their proper terms in line 13)
+      @total_guesses += 1
+      p @total_guesses
+      p @peg_array
+      game_over?
 
+    end
+  end
+=begin
   def insert_pegs
     #(@guess for below)?
     guess = @codebreaker.guess
@@ -56,7 +52,7 @@ class Mastermind
       end
     end
   end
-
+=end
   def insert_black_pegs
     @guess = @codebreaker.guess
     @code_copy.each_with_index do |color, index|
@@ -81,8 +77,12 @@ class Mastermind
   end
   
   def game_over?
-    if (@peg_array == ["black_peg", "black_peg", "black_peg", "black_peg"] || #I may be able to refactor this as peg_array[3] == "black_peg"
-      total_guesses > 12)
+    if @peg_array == ["black_peg", "black_peg", "black_peg", "black_peg"]#I may be able to refactor this as peg_array[3] == "black_peg"
+      puts "Congrats! You cracked the code!"
+      @game_over = true
+      return true
+    elsif @total_guesses > 11
+      puts "You failed to crack the code."
       @game_over = true
       return true
     else

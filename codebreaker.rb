@@ -6,6 +6,7 @@ class Codebreaker
 
   def guess
     i = 1
+    @guess = []
     while i < 5
       puts "Available colors: #{@available_colors}"
       puts "Choose color for slot #{i}"
